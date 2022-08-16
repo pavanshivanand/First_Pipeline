@@ -12,7 +12,7 @@ pipeline {
 	string(name: 'dockerUser', defaultValue: 'None', description: 'Enter Docker user name ')
     }
     environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		DOCKERHUB_CREDENTIALS=credentials('rachitha@123')
     }
     stages {
         stage('SCM checkout'){
