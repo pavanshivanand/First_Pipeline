@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('SCM checkout'){
         	steps {
-			git "https://github.com/vistasunil/jenkins-cicd-webinar.git"
+			git "https://github.com/pavanshivanand/First_Pipeline.git"
             	}
 	}
 	stage('Remove old containers'){
