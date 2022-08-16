@@ -22,18 +22,18 @@ pipeline {
 	}
 	stage('Remove old containers'){
 		steps {
-			sh "if [ `sudo docker ps -a -q|wc -l` -gt 0 ]; then sudo docker rm -f \$(sudo docker ps -a -q);fi"
+			sh "if [ `docker ps -a -q|wc -l` -gt 0 ]; then docker rm -f \$(docker ps -a -q);fi"
 		}
 	}
 	stage('Build deployment image'){
 		steps {
-			sh "sudo docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t ${dockerUser}/devopsdemo"
+			sh "docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t ${dockerUser}/devopsdemo"
 		}
 	}
 	stage('Push Image'){
 		steps {
-			sh "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login --username ${dockerUser} --password-stdin"
-			sh "sudo docker push ${dockerUser}/devopsdemo:latest"
+			sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login --username ${dockerUser} --password-stdin"
+			sh "docker push ${dockerUser}/devopsdemo:latest"
 		}
 	}
 	stage('Deploy website on containers') {
