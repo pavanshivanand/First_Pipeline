@@ -27,7 +27,7 @@ pipeline {
 	}
 	stage('Build deployment image'){
 		steps {
-			sh "docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t ${dockerUser}/devopsdemo"
+			sh "docker build C:/jenkins/workspace/${JOB_NAME} -t ${dockerUser}/devopsdemo"
 		}
 	}
 	stage('Push Image'){
